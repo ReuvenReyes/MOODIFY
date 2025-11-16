@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moodify Experience</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: background 1s ease;
+      color: white;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #moodText {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    .player-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .player-controls button {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 50%;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    .player-controls button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.1);
+    }
+
+    #songTitle {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Moodify Experience</h1>
+  <div id="moodText"></div>
+
+  <div class="player-controls">
+    <button onclick="prevSong()">⏮</button>
+    <button id="playPauseBtn" onclick="togglePlay()">➤</button>
+    <button onclick="nextSong()">⏭</button>
+  </div>
+
+  <div id="songTitle"></div>
+
+  <audio id="audioPlayer"></audio>
+
+  <script>
+    const mood = localStorage.getItem("selectedMood");
+    const body = document.body;
+    const audio = document.getElementById("audioPlayer");
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const moodText = document.getElementById("moodText");
+    const songTitle = document.getElementById("songTitle");
+
+    // Song list per mood
+    const moodData = {
+      happy: {
+        color: "#FFD54F",
+        bg: "url('images/happy.jpg')",
+        songs: [
+          { title: "Sunshine Vibes", src: "music/happy1.mp3" },
+          { title: "Smile More", src: "music/happy2.mp3" },
+        ]
+      },
+      sad: {
+        color: "#90A4AE",
+        bg: "url('images/sad.jpg')",
+        songs: [
+          { title: "Rainy Thoughts", src: "music/sad1.mp3" },
+          { title: "Falling Memories", src: "music/sad2.mp3" },
+        ]
+      },
+      calm: {
+        color: "#81C784",
+        bg: "url('images/calm.jpg')",
+        songs: [
+          { title: "Ocean Breeze", src: "music/calm1.mp3" },
+          { title: "Peaceful Flow", src: "music/calm2.mp3" },
+        ]
+      },
+      energetic: {
+        color: "#FF7043",
+        bg: "url('images/energetic.jpg')",
+        songs: [
+          { title: "Boost Mode", src: "music/energetic1.mp3" },
+          { title: "Power On", src: "music/energetic2.mp3" },
+        ]
+      },
+      focused: {
+        color: "#64B5F6",
+        bg: "url('images/focused.jpg')",
+        songs: [
+          { title: "Deep Work", src: "music/focused1.mp3" },
+          { title: "Laser Focus", src: "music/focused2.mp3" },
+        ]
+      }
+    };
+
+    let currentSongIndex = 0;
+
+    if (mood && moodData[mood]) {
+      const selectedMood = moodData[mood];
+      body.style.background = `${selectedMood.color} no-repeat center center / cover`;
+      body.style.backgroundImage = selectedMood.bg;
+      moodText.textContent = `You're feeling ${mood.toUpperCase()} today`;
+
+      audio.src = selectedMood.songs[currentSongIndex].src;
+      songTitle.textContent = selectedMood.songs[currentSongIndex].title;
+    }
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = "⏸";
+      } else {
+        audio.pause();
+        playPauseBtn.textContent = "➤";
+      }
+    }
+
+    function nextSong() {
+      const selectedMood = moodData[mood];
+      currentSongIndex = (currentSongIndex + 1) % selectedMood.songs.length;
+      audio.src = selectedMood.songs[currentSongIndex].src;
+      songTitle.textContent = selectedMood.songs[currentSongIndex].title;
+      audio.play();
+      playPauseBtn.textContent = "⏸";
+    }
+
+    function prevSong() {
+      const selectedMood = moodData[mood];
+      currentSongIndex = (currentSongIndex - 1 + selectedMood.songs.length) % selectedMood.songs.length;
+      audio.src = selectedMood.songs[currentSongIndex].src;
+      songTitle.textContent = selectedMood.songs[currentSongIndex].title;
+      audio.play();
+      playPauseBtn.textContent = "⏸";
+    }
+  </script>
+</body>
+</html>

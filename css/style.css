@@ -1,0 +1,52 @@
+
+.logo {
+    width: 150px; /* Adjust this size */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.home-page {
+  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+  animation: gradientShift 8s ease infinite;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-container h1 {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.mood-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 1.5em;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.mood-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+audio {
+  transition: all 0.5s ease;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Your Mood | Moodify</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body.mood-page {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 40px;
+    }
+
+    .mood-card {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 25px;
+      padding: 50px 0;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .mood-card:hover {
+      transform: scale(1.08);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    
+    .happy:hover { box-shadow: 0 0 25px #FFD54F; }
+    .sad:hover { box-shadow: 0 0 25px #64B5F6; }
+    .calm:hover { box-shadow: 0 0 25px #81C784; }
+    .energetic:hover { box-shadow: 0 0 25px #FF7043; }
+    .focused:hover { box-shadow: 0 0 25px #BA68C8; }
+
+    .container {
+      max-width: 900px;
+    }
+  </style>
+</head>
+<body class="mood-page">
+  <div class="container text-center">
+    <h1>Choose Your Mood</h1>
+    <p class="subtitle">Select how you feel right now — and let Moodify match your color, quote, and music to it.</p>
+
+    <div class="row mt-4">
+      <div class="col-md-4 mb-4">
+        <div class="mood-card happy" onclick="selectMood('happy')">😊 Happy</div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="mood-card sad" onclick="selectMood('sad')">😔 Sad</div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="mood-card calm" onclick="selectMood('calm')">😌 Calm</div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="mood-card energetic" onclick="selectMood('energetic')">⚡ Energetic</div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="mood-card focused" onclick="selectMood('focused')">💭 Focused</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/moods.js"></script>
+</body>
+</html>
