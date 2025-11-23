@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       playPauseBtn.textContent = '⏸ Pause';
     } else {
       audioPlayer.pause();
-      playPauseBtn.textContent = '▶️ Play';
+      playPauseBtn.textContent = '➤ Play';
     }
   });
 

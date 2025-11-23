@@ -1,52 +1,126 @@
-
+/* logo animation and size */
 .logo {
-    width: 150px; /* Adjust this size */
+    width: 150px;
     height: auto;
     margin-bottom: 20px;
+    opacity: 0; 
+    animation: fadeInDown 1.5s ease forwards; 
 }
 
+/* hero container fade up */
+.hero-container {
+    animation: fadeInUp 1s ease forwards 0.5s; 
+}
+
+/* tagline fade in */
+h2.tagline {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1.5s;
+}
+
+/* start button fade up */
+button.btn {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards 2s;
+}
+
+/* about section fade up */
+.about-section h2, .about-section p {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 2.5s;
+}
+
+/* basic body settings */
 body {
-  font-family: 'Poppins', sans-serif;
-  color: white;
-  margin: 0;
-  overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin: 0;
+    overflow-x: hidden;
 }
 
+/* home page background */
 .home-page {
-  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-  animation: gradientShift 8s ease infinite;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    animation: gradientShift 8s ease infinite; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/* hero h1 size */
 .hero-container h1 {
-  font-size: 4em;
-  font-weight: bold;
+    font-size: 4em;
+    font-weight: bold;
 }
 
+/* mood cards style */
 .mood-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 40px;
-  border-radius: 20px;
-  color: #fff;
-  font-size: 1.5em;
-  transition: 0.4s;
-  cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 1.5em;
+    transition: 0.4s;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
 }
 
+/* hover effect */
 .mood-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+/* stagger card animation */
+.mood-card:nth-child(1) { animation-delay: 1.2s; }
+.mood-card:nth-child(2) { animation-delay: 1.4s; }
+.mood-card:nth-child(3) { animation-delay: 1.6s; }
+.mood-card:nth-child(4) { animation-delay: 1.8s; }
+.mood-card:nth-child(5) { animation-delay: 2s; }
 
+/* audio player styling */
 audio {
-  transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+/* music player container */
+.music-player {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    width: 350px;
+}
+
+/* volume control */
+.volume-control input[type=range] {
+    width: 150px;
+}
+
+/*animation */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
